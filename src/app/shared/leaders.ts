@@ -1,15 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Leader } from '../shared/leader';
-import { LeaderService } from '../services/leader.service';
+import { Leader } from './leader';
 
-@Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
-})
-export class AboutComponent implements OnInit {
-
-  leaders: Leader[] = [
+export const LEADERS: Leader[] =[
     {
       id: '0',
       name: 'Peter Pan',
@@ -18,7 +9,7 @@ export class AboutComponent implements OnInit {
       abbr: 'CEO',
       featured: false,
       // tslint:disable-next-line:max-line-length
-      description: 'Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother\'s wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket, was his first inspiration to create the fusion cuisines for which.'
+      description: 'Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother\'s wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket .'
     },
     {
       id: '1',
@@ -51,13 +42,3 @@ export class AboutComponent implements OnInit {
       description: 'Award winning three-star Michelin chef with wide International experience having worked closely with whos-who in the culinary world, he specializes in creating mouthwatering Indo-Italian fusion experiences. He says, Put together the cuisines from the two craziest cultures, and you get a winning hit! Amma Mia!'
     }
   ];
-  
-  
-
-  constructor(private leaderService: LeaderService) { }
-
-  ngOnInit() {
-    this.leaderService.getLeaders()
-      .then(leaders => this.leaders = leaders);
-  }
-}

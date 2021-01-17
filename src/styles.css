@@ -20,4 +20,19 @@ body {
 .nobull {
     list-style-type: none;
    }
-  
+.image {
+    border: 2px;
+    padding: 2px;
+    border-radius: 50%;
+
+}
+
+.word {
+  border: 4px;
+  padding: 4px;
+  margin: 4px;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
