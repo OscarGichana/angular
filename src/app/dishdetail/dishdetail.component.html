@@ -17,7 +17,7 @@
                     <h3>{{dish.name | uppercase}}</h3>
                     </mat-card-title>
                 </mat-card-header>
-								<img mat-card-image src={{dish.image}} alt={{dish.name}}>
+								<img mat-card-image src="{{ BaseURL + dish.image}}" alt={{dish.name}}>
                 <mat-card-content>
                     <p>{{dish.description}}
                     </p>
@@ -28,7 +28,8 @@
                     <button mat-button>LIKE</button>
                     <button mat-button>SHARE</button>
                     <span class="flex-spacer"></span>
-                    <button mat-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>            
+                    <button mat-button [routerLink]="['/dishdetail', next]"><span class="fa fa-chevron-right fa-lg"></span></button>
+            
                 </mat-card-actions>
                 </mat-card>
       </div>
@@ -38,7 +39,7 @@
   </div>
         
 
-
+  
   <div fxFlex="40"  *ngIf="dish">
     <div fxFlex>
         <h1>Comments:</h1>
@@ -53,7 +54,7 @@
             </div>
           </mat-list-item>
 
-          <br><br><br><br>
+          <br><br><br>
 
           <mat-list-item>
             <div>
@@ -65,7 +66,7 @@
             </div>
           </mat-list-item>
 
-          <br><br><br><br>
+          <br><br><br>
 
           <mat-list-item>
             <div>
@@ -77,7 +78,7 @@
             </div>
           </mat-list-item>
 
-          <br><br><br><br>
+          <br><br><br>
 
           <mat-list-item>
             <div>
@@ -89,7 +90,7 @@
             </div>
           </mat-list-item>
 
-          <br><br>
+          <br><br><br>
 
           <mat-list-item>
             <div>
@@ -100,13 +101,38 @@
 							</ul>
             </div>
           </mat-list-item>
-      
         </mat-list>
-      </div>
-      <div [hidden]="dish">
-        <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-      </div>
+
+        
+        
+          <form novalidate [formGroup]="commentsForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+            <p>
+              <mat-form-field class="full-width">
+                <input matInput formControlName="author" placeholder="Name" type="text" required>
+                <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
+              </mat-form-field>
+            </p>
+            
+            <mat-slider min="1" max="5" step="1" thumbLabel="1" tickInterval="1" value="1"></mat-slider>
+  
+            <p>
+              <mat-form-field class="full-width">
+                <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+              </mat-form-field>
+            </p>
+            <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
+          </form>
+  
+        
+        
+
+
+    
+
+
+    </div>
+    
+  
   </div>
   
-
 </div>
